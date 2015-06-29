@@ -1,0 +1,19 @@
+<section data-ng-controller="RemarksController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Remarks</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="remark in remarks" data-ng-href="#!/remarks/{{remark._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="remark.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="remark.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="remark.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!remarks.$resolved || remarks.length">
+    	No Remarks yet, why don't you <a href="/#!/remarks/create">create one</a>?
+    </div>
+</section>
